@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjetoMVC2023.UI;
 
 namespace ProjetoMVC2023
 {
@@ -16,7 +17,7 @@ namespace ProjetoMVC2023
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmCadastrarUsuario());
         }
     }
 }

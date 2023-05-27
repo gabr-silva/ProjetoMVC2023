@@ -9,13 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjetoMVC2023.UI;
 
 namespace ProjetoMVC2023
 {
     public partial class FrmLogin : Form
     {
-        LoginDTO usuario = new LoginDTO();
-        LoginBLL Login = new LoginBLL();
         public FrmLogin()
         {
             InitializeComponent();
@@ -23,19 +22,35 @@ namespace ProjetoMVC2023
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
-            usuario.Nome = txtBoxNome.Text;
-            usuario.Senha = txtBoxSenha.Text;
+            LoginDTO dadosLogin = new LoginDTO
 
-            bool retorno = Login.GetLoginBLL(usuario);
+            {
+                Email = "admin@gmail.com",
 
+                Senha = "admin"
+
+            };
+
+            // chamar o controle
+
+            LoginBLL login = new LoginBLL();
+
+            bool retorno = login.GetLoginBLL(dadosLogin);
 
             if (retorno)
+
             {
-                MessageBox.Show("Acessando Sistema");
+                // carregar o Formulario de menu
+
+                FrmMenu frmMenu = new FrmMenu();
+                frmMenu.Show();
+
+                // ocultar o Formulario login
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Nome e Senha invalido");
+                MessageBox.Show("Erro de Login");
             }
         }
     }

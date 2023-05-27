@@ -13,13 +13,16 @@ namespace ProjetoMVC2023.BLL
         //metodo de controle
         public bool GetLoginBLL(LoginDTO dadosLogin)
         {
-            if (dadosLogin.Nome == "")
+            // validação
+            if (dadosLogin.Email == "" || dadosLogin.Senha == "")
             {
                 return false;
             }
 
+            // criar um obj da DAL
             LoginDAL login = new LoginDAL();
 
+            // chamar o logindall
             return login.GetLoginDAL(dadosLogin);
         }
     }
